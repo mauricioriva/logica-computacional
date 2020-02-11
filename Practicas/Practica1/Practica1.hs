@@ -43,7 +43,14 @@ puntoMedio (x1,y1) (x2,y2) = ((x1+x2)/2, (y1+y2)/2)
 --Función que dada una ecuación de segundo grado encuentra las raices de esta en una
 --pareja ordenada
 raices :: Float -> Float -> Float -> (Complejo,Complejo)
-raices 0 _ _ = ((0,0),(0,0))
+raices a b c = if k < 0 then solImg a b c else ((r1,i1),(r2,i2))
+                where
+                    r1 = f + sqrt k / (2*a)
+                    r2 = f - sqrt k / (2*a)
+                    i1 = 0
+                    i2 = 0
+                    k = b^2 - 4*a*c
+                    f = -b / (2*a)  
 
 --Definir la función segmento tal que (segmento m n xs) es la lista de los
 --elementos de xs comprendidos entre las posiciones m y n. Por ejemplo,
@@ -158,3 +165,15 @@ pertenece a (x:xs)
 concatena :: Lista a -> Lista a -> Lista a
 concatena Nula xs = xs
 concatena (Cons x xs) ys = Cons x (concatena xs ys)
+
+--Función que obtiene las soluciones de la ecuación de segundo grado sabiendo que las 
+--soluciones son de la forma a+bi
+solImg :: Float -> Float -> Float -> (Complejo,Complejo) 
+solImg a b c = ((r1,i1),(r2,i2))
+    where
+        r1 = f
+        r2 = f
+        i1 = sqrt (-1*k) / (2*a)
+        i2 = -1*(sqrt (-1*k) / (2*a))
+        k = b^2 - 4*a*c
+        f = -b / (2*a)  
