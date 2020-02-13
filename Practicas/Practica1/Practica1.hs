@@ -70,7 +70,9 @@ segmento a b (x:xs)
 --extremos 3 [2,6,7,1,2,4,5,8,9,2,3] == [2,6,7,9,2,3]
 extremos :: Int -> [a] -> [a]
 extremos 0 xs = []
-extremos a xs = (segmento 1 a xs) ++ (segmento (longitud xs - a + 1) (longitud xs) xs)
+extremos a xs = (segmento 1 a xs) ++ (segmento (long - a + 1) long xs)
+                where
+                    long = longitud xs
 
 --Funcion que elimina un intervalo de una lista; dados dos números y una lista,
 --elimina los elementos que se encuentren en el intervalo de esos dos numeros.
